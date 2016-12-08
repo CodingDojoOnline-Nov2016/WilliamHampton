@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, redirect,session,flash
 app = Flask(__name__)
-
+app.secret_key = "Why do we do this..."
 @app.route('/')
 def main():
     return render_template('main.html')
@@ -12,16 +12,23 @@ def results():
     location = request.form['location']
     language = request.form['language']
     comment = request.form['comment']
+    error = False
     if len(name) <1:
-        return render_template('results.html',name = "Name Can not be empty", location = location, language = language, comment = comment)
+        error = True
+        flash('Fill out the name please','name')
     if len(location) <1:
-        return render_template('results.html',name = name, location ="Location Can not be empty", language = language, comment = comment)
+        error = True
+        flash('Fill out the location please','location')
     if len(language) <1:
-        return render_template('results.html',name = name, location = location, language = "Language Can not be empty", comment = comment)
+        error = True
+        flash('Fill out the language please','language')
     if len(comment) <1:
-        return render_template('results.html',name = name, location = location, language = language, comment = "Comment can not be empty")
+        error = True
+        flash('Comment Please','comment')
     if len(comment) >120:
-        return render_template('results.html',name = name, location = location, language = language, comment = "Comment is to long to display")
-    else:
+        error = True
+        flash('Comment to large to display','comment')
+    if not error:
         return render_template('results.html',name = name, location = location, language = language, comment = comment)
+    return redirect('/')
 app.run(debug=True)
