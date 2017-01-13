@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<head>
+  {% load staticfiles %}
+  <link rel=”stylesheet” href='{% static "bootstrap.css" %}'  type=”text/css”/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src=”js/bootstrap.js”></script>
+</head>
+<body>
+  <form action = '/users' method = 'post'>
+    <h4>Email</h4>
+    <input type = 'text' name = 'email'>
+    <h4>Password</h4>
+    <input type = 'text' name = 'password'>
+    {% csrf_token %}
+    <input type = 'submit' value = 'Login'>
+  </form>
+</body>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+  {% load staticfiles %}
+  <link rel=”stylesheet” href='{% static "bootstrap.css" %}'  type=”text/css”/>
+  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+  <script src=”js/bootstrap.js”></script>
+</head>
+<body>
+  <form action = '/login' method = 'post'>
+    <h4>First Name</h4>
+    <input type = 'text' name = 'first_name'>
+    <h4>Last_name</h4>
+    <input type = 'text' name = 'last_name'>
+    <h4>Email</h4>
+    <input type = 'text' name = 'email'>
+    <h4>Password</h4>
+    <input type = 'text' name = 'password'>
+    <h4>Confirm Password</h4>
+    <input type = 'text' name = 'password_con'>
+    {% csrf_token %}
+    <input type = 'submit' value = 'Add a Product'>
+  </form>
+</body>
