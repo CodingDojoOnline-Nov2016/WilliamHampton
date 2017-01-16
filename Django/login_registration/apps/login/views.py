@@ -68,7 +68,8 @@ def login(request):
     # print ([p.password for p in user]),passhash
     if user is not None:
         if bcrypt.hashpw(password_login.encode(), hashed.encode()) == hashed:
-            print 'Worked!!!'
+            print user.first_name
+            request.session['first_name'] = user.first_name            
             return render(request, 'sucess.html')
     else:
         context = {
