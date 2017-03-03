@@ -15,6 +15,7 @@
       {% if  review.book.id == book.id %}
           <p> {{ review.review }}</p>
           <b>Review by: </b><a href = 'users/{{ review.user.id }}'>{{ review.user.first_name}} {{ review.user.last_name }}</a>
+
       {% endif %}
     {% endfor %}
 

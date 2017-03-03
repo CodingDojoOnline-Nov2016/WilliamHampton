@@ -15,6 +15,7 @@ reviews_all = reviews.objects.all()
 def index(request):
     context= {
         'users': users.objects.all()
+
     }
     return render(request, 'index.html',context)
 
@@ -93,7 +94,6 @@ def books_route(request):
         'books': books.objects.all(),
         'reviews': reviews.objects.all(),
         'users': users.objects.all(),
-        'number': 3
     }
     return render(request, 'books.html',context )
 
@@ -146,7 +146,7 @@ def newreview(request, id):
 def user_display(request,id):
     users_user = users_all.filter(id = id)
     reviews_review = reviews_all.filter(user = id)
-    number = reviews.objects.filter(user= id).annotate(count = Count("id"))
+    number = reviews.objects.filter(id= id).annotate(count = Count("id"))
     context = {
         'reviews': reviews_review,
         'users': users_user,

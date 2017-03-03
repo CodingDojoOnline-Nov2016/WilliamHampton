@@ -8,6 +8,6 @@ class Users(models.Model):
     email = models.CharField(max_length = 255)
     password = models.CharField(max_length = 255)
     created_at = models.DateTimeField(blank=True, null=True)
-    
-class admin(models.Model):
+
+class Admins(models.Model):
     member = models.ForeignKey(Users)
